@@ -30,11 +30,18 @@
 
   /* Status Colors */
   --color-success: #10B981;
+  --color-success-hover: #059669;
   --color-success-light: #D1FAE5;
   --color-warning: #F59E0B;
+  --color-warning-hover: #D97706;
   --color-warning-light: #FEF3C7;
+  --color-warning-text: #92400E;
   --color-error: #EF4444;
+  --color-error-hover: #DC2626;
   --color-error-light: #FEE2E2;
+  --color-info: #3B82F6;
+  --color-info-hover: #2563EB;
+  --color-info-light: #DBEAFE;
 
   /* Border Colors */
   --color-border-light: #E5E7EB;
@@ -108,6 +115,9 @@
   --input-height-sm: 2rem;      /* 32px */
   --input-height-md: 2.5rem;    /* 40px */
   --input-height-lg: 3rem;      /* 48px */
+  --badge-height-sm: 1.25rem;   /* 20px */
+  --badge-height-md: 1.5rem;    /* 24px */
+  --badge-height-lg: 1.75rem;   /* 28px */
 }
 
 /* Dark mode overrides */
