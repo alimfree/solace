@@ -1,3 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import '../styles/tokens.css';
+@import '../styles/mixins.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: var(--font-family-primary);
+  background-color: var(--current-bg);
+  color: var(--current-text);
+  line-height: var(--line-height-normal);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Improved focus styles for accessibility */
+*:focus {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Better button and input defaults */
+button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--current-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--current-border);
+  border-radius: var(--border-radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-subtle-light);
+}
+
+/* Dark mode media query support */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --current-bg: var(--color-background-dark);
+    --current-card: var(--color-card-dark);
+    --current-text: var(--color-text-dark);
+    --current-text-muted: var(--color-text-muted-dark);
+    --current-border: var(--color-border-dark);
+    --current-subtle: var(--color-subtle-dark);
+  }
+}
