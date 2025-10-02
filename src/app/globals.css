@@ -73,14 +73,4 @@ input, select, textarea {
   background: var(--color-subtle-light);
 }
 
-/* Dark mode media query support */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    --current-bg: var(--color-background-dark);
-    --current-card: var(--color-card-dark);
-    --current-text: var(--color-text-dark);
-    --current-text-muted: var(--color-text-muted-dark);
-    --current-border: var(--color-border-dark);
-    --current-subtle: var(--color-subtle-dark);
-  }
-}
+/* Light mode as default - no automatic dark mode preference */

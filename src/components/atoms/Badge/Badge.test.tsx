@@ -66,6 +66,12 @@ describe('Badge Component', () => {
       const badge = screen.getByText('Info Badge').closest('.badge');
       expect(badge).toHaveClass('info');
     });
+
+    it('applies specialty variant', () => {
+      render(<Badge variant="specialty">Specialty Badge</Badge>);
+      const badge = screen.getByText('Specialty Badge').closest('.badge');
+      expect(badge).toHaveClass('specialty');
+    });
   });
 
   // Size Tests

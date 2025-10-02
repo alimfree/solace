@@ -1,0 +1,116 @@
+/* Advocate Card */
+.card {
+  background-color: var(--current-card);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.clickable:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-md);
+}
+
+.nameSection {
+  flex: 1;
+}
+
+.name {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--current-text);
+  margin: 0 0 var(--spacing-xs) 0;
+  line-height: var(--line-height-tight);
+}
+
+.city {
+  font-size: var(--font-size-sm);
+  color: var(--current-subtle);
+  margin: 0;
+}
+
+.experience {
+  text-align: right;
+  flex-shrink: 0;
+  margin-left: var(--spacing-md);
+}
+
+.experienceText {
+  font-size: var(--font-size-sm);
+  color: var(--current-subtle);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Specialties */
+.specialties {
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.specialtyBadge {
+  flex-shrink: 0;
+}
+
+/* Contact */
+.contact {
+  border-top: 1px solid var(--current-border);
+  padding-top: var(--spacing-md);
+}
+
+.phone {
+  font-size: var(--font-size-sm);
+  color: var(--current-subtle);
+  font-family: var(--font-family-mono);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card {
+    padding: var(--spacing-md);
+  }
+
+  .header {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .experience {
+    text-align: left;
+    margin-left: 0;
+  }
+
+  .name {
+    font-size: var(--font-size-base);
+  }
+}
+
+@media (max-width: 480px) {
+  .specialties {
+    gap: var(--spacing-xs);
+  }
+}

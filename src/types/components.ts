@@ -19,6 +19,7 @@ export interface ButtonProps extends BaseComponentProps {
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
   loading?: boolean;
+  'aria-label'?: string;
 }
 
 /**

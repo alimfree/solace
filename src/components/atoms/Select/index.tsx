@@ -7,7 +7,7 @@ export interface SelectOption {
   disabled?: boolean;
 }
 
-export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'size'> {
+export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'size' | 'onChange'> {
   label?: string;
   error?: string;
   helperText?: string;
@@ -17,6 +17,7 @@ export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectE
   fullWidth?: boolean;
   placeholder?: string;
   options: SelectOption[];
+  onChange?: (value: string) => void;
 }
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>(({
@@ -32,9 +33,16 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(({
   className = '',
   disabled = false,
   id,
+  onChange,
   ...props
 }, ref) => {
   const selectId = id || `select-${Math.random().toString(36).substr(2, 9)}`;
+
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    if (onChange) {
+      onChange(event.target.value);
+    }
+  };
 
   const selectClasses = [
     styles.select,
@@ -73,6 +81,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(({
             error ? `${selectId}-error` :
             helperText ? `${selectId}-helper` : undefined
           }
+          onChange={handleChange}
           {...props}
         >
           {placeholder && (

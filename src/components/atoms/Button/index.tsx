@@ -11,6 +11,7 @@ const Button: React.FC<ButtonProps> = ({
   disabled = false,
   loading = false,
   className = '',
+  'aria-label': ariaLabel,
 }) => {
   const buttonClasses = [
     styles.button,
@@ -36,6 +37,7 @@ const Button: React.FC<ButtonProps> = ({
       onClick={handleClick}
       disabled={disabled || loading}
       aria-disabled={disabled || loading}
+      aria-label={ariaLabel}
     >
       {loading && <span className={styles.spinner} aria-hidden="true" />}
       <span className={loading ? styles.hiddenText : ''}>{children}</span>

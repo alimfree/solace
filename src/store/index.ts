@@ -1,7 +1,23 @@
 import { create } from 'zustand';
-import { devtools, subscribeWithSelector } from 'zustand/middleware';
+import { devtools } from 'zustand/middleware';
+import { shallow } from 'zustand/shallow';
 import { advocatesSlice, AdvocatesSlice } from './slices/advocatesSlice';
 import { searchSlice, SearchSlice } from './slices/searchSlice';
+
+// Persistence functions for localStorage
+const loadSearchHistoryFromStorage = () => {
+  if (typeof window !== 'undefined') {
+    const savedHistory = localStorage.getItem('solace-search-history');
+    if (savedHistory) {
+      try {
+        return JSON.parse(savedHistory);
+      } catch (error) {
+        console.warn('Failed to parse saved search history:', error);
+      }
+    }
+  }
+  return [];
+};
 
 // Combined store interface
 export interface AppStore extends AdvocatesSlice, SearchSlice {}
@@ -9,10 +25,12 @@ export interface AppStore extends AdvocatesSlice, SearchSlice {}
 // Create the main store with combined slices
 export const useAppStore = create<AppStore>()(
   devtools(
-    subscribeWithSelector((...a) => ({
-      ...advocatesSlice(...a),
-      ...searchSlice(...a),
-    })),
+    (set, get, api) => ({
+      ...advocatesSlice(set, get, api),
+      ...searchSlice(set, get, api),
+      // Override search history with saved data
+      searchHistory: loadSearchHistoryFromStorage(),
+    }),
     {
       name: 'solace-store',
     }
@@ -29,7 +47,7 @@ export const useAdvocates = () => useAppStore((state) => ({
   updateAdvocate: state.updateAdvocate,
   deleteAdvocate: state.deleteAdvocate,
   clearError: state.clearError,
-}));
+}), shallow);
 
 export const useSearch = () => useAppStore((state) => ({
   searchQuery: state.searchQuery,
@@ -42,7 +60,7 @@ export const useSearch = () => useAppStore((state) => ({
   clearSearch: state.clearSearch,
   addToSearchHistory: state.addToSearchHistory,
   clearSearchHistory: state.clearSearchHistory,
-}));
+}), shallow);
 
 // Computed selectors
 export const useAdvocateStats = () => useAppStore((state) => {
@@ -65,7 +83,7 @@ export const useAdvocateStats = () => useAppStore((state) => {
       return acc;
     }, {} as Record<string, number>),
   };
-});
+}, shallow);
 
 export const useFilterOptions = () => useAppStore((state) => {
   const advocates = state.advocates;
@@ -88,27 +106,11 @@ export const useFilterOptions = () => useAppStore((state) => {
       { value: '20+', label: '20+ years' }
     ],
   };
-});
+}, shallow);
 
-// Persistence subscription (could be extended to localStorage)
-useAppStore.subscribe(
-  (state) => state.searchHistory,
-  (searchHistory) => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('solace-search-history', JSON.stringify(searchHistory));
-    }
+// Export persistence function for external use
+export const saveSearchHistoryToStorage = (searchHistory: any[]) => {
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('solace-search-history', JSON.stringify(searchHistory));
   }
-);
-
-// Initialize search history from localStorage
-if (typeof window !== 'undefined') {
-  const savedHistory = localStorage.getItem('solace-search-history');
-  if (savedHistory) {
-    try {
-      const history = JSON.parse(savedHistory);
-      useAppStore.setState({ searchHistory: history });
-    } catch (error) {
-      console.warn('Failed to parse saved search history:', error);
-    }
-  }
-}
+};

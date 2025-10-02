@@ -228,6 +228,11 @@ export const searchSlice: StateCreator<
       // Keep only the last 10 searches
       newHistory = newHistory.slice(0, 10);
 
+      // Save to localStorage
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('solace-search-history', JSON.stringify(newHistory));
+      }
+
       return {
         ...state,
         searchHistory: newHistory

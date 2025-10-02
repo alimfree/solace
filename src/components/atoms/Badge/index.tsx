@@ -3,7 +3,7 @@ import styles from './style.module.css';
 
 export interface BadgeProps {
   children: React.ReactNode;
-  variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info';
+  variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info' | 'specialty';
   size?: 'small' | 'medium' | 'large';
   shape?: 'rounded' | 'pill';
   className?: string;

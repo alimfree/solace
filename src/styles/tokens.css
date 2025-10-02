@@ -43,6 +43,12 @@
   --color-info-hover: #2563EB;
   --color-info-light: #DBEAFE;
 
+  /* Badge Colors - Teal theme from mockup */
+  --color-badge-bg-light: #ccfbf1;    /* teal-100 */
+  --color-badge-text-light: #115e59;  /* teal-800 */
+  --color-badge-bg-dark: #134e4a;     /* teal-800 */
+  --color-badge-text-dark: #99f6e4;   /* teal-200 */
+
   /* Border Colors */
   --color-border-light: #E5E7EB;
   --color-border-dark: #4A5568;
@@ -128,6 +134,8 @@
   --current-text-muted: var(--color-text-muted-dark);
   --current-border: var(--color-border-dark);
   --current-subtle: var(--color-subtle-dark);
+  --current-badge-bg: var(--color-badge-bg-dark);
+  --current-badge-text: var(--color-badge-text-dark);
 }
 
 /* Light mode (default) */
@@ -138,4 +146,6 @@
   --current-text-muted: var(--color-text-muted-light);
   --current-border: var(--color-border-light);
   --current-subtle: var(--color-subtle-light);
+  --current-badge-bg: var(--color-badge-bg-light);
+  --current-badge-text: var(--color-badge-text-light);
 }
