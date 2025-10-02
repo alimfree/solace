@@ -40,19 +40,7 @@ const AdvocateList: React.FC<AdvocateListProps> = ({
     className
   ].filter(Boolean).join(' ');
 
-  // Loading state
-  if (loading && advocates.length === 0) {
-    return (
-      <div className={styles.loadingContainer}>
-        <LoadingState
-          message="Loading advocates..."
-          size="large"
-        />
-      </div>
-    );
-  }
-
-  // Error state
+  // Error state (takes precedence over loading)
   if (error) {
     return (
       <div className={styles.errorContainer}>
@@ -68,6 +56,18 @@ const AdvocateList: React.FC<AdvocateListProps> = ({
             Try Again
           </Button>
         </div>
+      </div>
+    );
+  }
+
+  // Loading state
+  if (loading && advocates.length === 0) {
+    return (
+      <div className={styles.loadingContainer}>
+        <LoadingState
+          message="Loading advocates..."
+          size="large"
+        />
       </div>
     );
   }

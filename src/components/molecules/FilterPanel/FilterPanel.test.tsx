@@ -249,7 +249,7 @@ describe('FilterPanel Component', () => {
       );
 
       const specialtySelect = screen.getByLabelText('Specialty');
-      await user.selectOptions(specialtySelect, 'All Specialties');
+      fireEvent.change(specialtySelect, { target: { value: '' } });
 
       expect(mockOnFiltersChange).toHaveBeenCalledWith({
         ...mockFiltersWithValues,
@@ -407,7 +407,7 @@ describe('FilterPanel Component', () => {
       );
 
       const specialtySelect = screen.getByLabelText('Specialty');
-      await user.selectOptions(specialtySelect, 'All Specialties');
+      fireEvent.change(specialtySelect, { target: { value: '' } });
 
       expect(mockOnFiltersChange).toHaveBeenCalledWith({
         ...mockFiltersWithValues,

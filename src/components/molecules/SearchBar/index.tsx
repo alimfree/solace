@@ -54,6 +54,13 @@ const SearchBar: React.FC<SearchBarProps> = ({
     setFilters(newFilters);
   }, [filters]);
 
+  const handleSelectChange = useCallback((field: keyof SearchFilters) => (
+    value: string
+  ) => {
+    const newFilters = { ...filters, [field]: value };
+    setFilters(newFilters);
+  }, [filters]);
+
   const handleSearch = useCallback((e?: React.FormEvent) => {
     e?.preventDefault();
     onSearch(filters);
@@ -157,7 +164,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
               <Select
                 label="City"
                 value={filters.city}
-                onChange={handleInputChange('city')}
+                onChange={handleSelectChange('city')}
                 options={[
                   { value: '', label: 'All Cities' },
                   ...cityOptions
@@ -169,7 +176,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
               <Select
                 label="Legal Specialty"
                 value={filters.specialty}
-                onChange={handleInputChange('specialty')}
+                onChange={handleSelectChange('specialty')}
                 options={[
                   { value: '', label: 'All Specialties' },
                   ...specialtyOptions
@@ -181,7 +188,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
               <Select
                 label="Experience Level"
                 value={filters.experience}
-                onChange={handleInputChange('experience')}
+                onChange={handleSelectChange('experience')}
                 options={[
                   { value: '', label: 'Any Experience' },
                   ...experienceOptions
