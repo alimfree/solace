@@ -1,0 +1,243 @@
+/* SearchBar Container */
+.searchBar {
+  width: 100%;
+  background-color: var(--current-background);
+  border-radius: var(--border-radius-xl);
+  border: 1px solid var(--current-border);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.searchBar:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+}
+
+/* Search Form */
+.searchForm {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* Main Search Input Wrapper */
+.searchInputWrapper {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: flex-end;
+}
+
+.searchInput {
+  flex: 1;
+}
+
+.filterToggle {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  white-space: nowrap;
+}
+
+/* Filters Section */
+.filtersSection {
+  background-color: var(--current-background-secondary);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  border: 1px solid var(--current-border);
+}
+
+.filtersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+/* Active Filters */
+.activeFilters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background-color: var(--color-background-light);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--current-border);
+}
+
+.activeFiltersLabel {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--current-text-muted);
+  margin-bottom: var(--spacing-xs);
+}
+
+.filterTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+/* Action Buttons */
+.searchActions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.searchButton {
+  min-width: 120px;
+}
+
+.clearButton {
+  min-width: 100px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .searchForm {
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+  }
+
+  .searchInputWrapper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-sm);
+  }
+
+  .filterToggle {
+    justify-content: center;
+  }
+
+  .filtersGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .searchActions {
+    flex-direction: column-reverse;
+    gap: var(--spacing-sm);
+  }
+
+  .searchButton,
+  .clearButton {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .activeFilters {
+    padding: var(--spacing-sm);
+  }
+
+  .filterTags {
+    gap: var(--spacing-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .searchForm {
+    padding: var(--spacing-sm);
+  }
+
+  .filtersSection {
+    padding: var(--spacing-md);
+  }
+
+  .filterToggle {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+}
+
+/* Animation for filter section */
+.filtersSection {
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Focus management */
+.searchBar:focus-within .filterToggle {
+  color: var(--color-primary);
+}
+
+/* Loading state */
+.searchBar:has(.searchButton[disabled]) {
+  opacity: 0.8;
+}
+
+/* Empty state styling */
+.searchBar:not(:focus-within):not(:has(.filterTags > *)) {
+  border-color: var(--current-border);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .searchBar {
+  background-color: var(--color-background-dark);
+  border-color: var(--color-border-dark);
+}
+
+[data-theme="dark"] .filtersSection {
+  background-color: var(--color-background-secondary-dark);
+  border-color: var(--color-border-dark);
+}
+
+[data-theme="dark"] .activeFilters {
+  background-color: var(--color-background-secondary-dark);
+  border-color: var(--color-border-dark);
+}
+
+[data-theme="dark"] .activeFiltersLabel {
+  color: var(--color-text-muted-dark);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .searchBar {
+    border-width: 2px;
+  }
+
+  .filtersSection {
+    border-width: 2px;
+  }
+
+  .activeFilters {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .filtersSection {
+    animation: none;
+  }
+
+  .searchBar {
+    transition: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .searchBar {
+    border: 2px solid #000;
+    box-shadow: none;
+  }
+
+  .filterToggle {
+    display: none;
+  }
+}
