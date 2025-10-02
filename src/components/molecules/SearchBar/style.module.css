@@ -17,19 +17,17 @@
 .searchForm {
   padding: var(--spacing-lg);
   display: flex;
-  flex-direction: column;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-md);
+  align-items: center;
 }
 
 /* Main Search Input Wrapper */
 .searchInputWrapper {
-  display: flex;
-  gap: var(--spacing-md);
-  align-items: flex-end;
+  flex: 1;
 }
 
 .searchInput {
-  flex: 1;
+  width: 100%;
 }
 
 .filterToggle {
@@ -89,51 +87,30 @@
 
 .searchButton {
   min-width: 120px;
+  flex-shrink: 0;
 }
 
-.clearButton {
+.resetButton {
   min-width: 100px;
+  flex-shrink: 0;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
   .searchForm {
     padding: var(--spacing-md);
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
+    flex-direction: column;
   }
 
   .searchInputWrapper {
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--spacing-sm);
-  }
-
-  .filterToggle {
-    justify-content: center;
-  }
-
-  .filtersGrid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-md);
-  }
-
-  .searchActions {
-    flex-direction: column-reverse;
-    gap: var(--spacing-sm);
+    width: 100%;
   }
 
   .searchButton,
-  .clearButton {
+  .resetButton {
     width: 100%;
     min-width: unset;
-  }
-
-  .activeFilters {
-    padding: var(--spacing-sm);
-  }
-
-  .filterTags {
-    gap: var(--spacing-xs);
   }
 }
 

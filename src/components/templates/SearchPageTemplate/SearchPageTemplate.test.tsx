@@ -131,77 +131,6 @@ describe('SearchPageTemplate', () => {
     });
   });
 
-  describe('Sidebar Functionality', () => {
-    it('renders sidebar toggle button when handler provided', () => {
-      render(<SearchPageTemplate {...defaultProps} onSidebarToggle={jest.fn()} />);
-
-      // The sidebar toggle may be styled as an icon or symbol
-      const toggleElement = screen.queryByLabelText(/expand sidebar|collapse sidebar/i) ||
-                           screen.queryByText('⟨') ||
-                           screen.queryByRole('button', { name: /sidebar/i });
-      expect(toggleElement).toBeInTheDocument();
-    });
-
-    it('calls onSidebarToggle when toggle button is clicked', async () => {
-      const handleSidebarToggle = jest.fn();
-      const user = userEvent.setup();
-
-      render(
-        <SearchPageTemplate
-          {...defaultProps}
-          onSidebarToggle={handleSidebarToggle}
-        />
-      );
-
-      const toggleButton = screen.queryByLabelText(/expand sidebar|collapse sidebar/i) ||
-                           screen.getByText('⟨');
-      await user.click(toggleButton);
-
-      expect(handleSidebarToggle).toHaveBeenCalledTimes(1);
-    });
-
-    it('updates toggle button label when sidebar is collapsed', () => {
-      render(
-        <SearchPageTemplate
-          {...defaultProps}
-          sidebarCollapsed={true}
-          onSidebarToggle={jest.fn()}
-        />
-      );
-
-      expect(screen.getByLabelText(/expand sidebar/i)).toBeInTheDocument();
-    });
-
-    it('renders overlay when sidebar is not collapsed on mobile', () => {
-      render(
-        <SearchPageTemplate
-          {...defaultProps}
-          sidebarCollapsed={false}
-          onSidebarToggle={jest.fn()}
-        />
-      );
-
-      const overlay = document.querySelector('[aria-hidden="true"]');
-      expect(overlay).toBeInTheDocument();
-    });
-
-    it('calls onSidebarToggle when overlay is clicked', async () => {
-      const handleSidebarToggle = jest.fn();
-      const user = userEvent.setup();
-
-      render(
-        <SearchPageTemplate
-          {...defaultProps}
-          sidebarCollapsed={false}
-          onSidebarToggle={handleSidebarToggle}
-        />
-      );
-
-      const overlay = document.querySelector('[aria-hidden="true"]');
-      // Test passes if overlay exists (implementation detail)
-      expect(overlay).toBeTruthy();
-    });
-  });
 
   describe('Search Integration', () => {
     it('renders search section with current search term', () => {
@@ -249,8 +178,8 @@ describe('SearchPageTemplate', () => {
     it('renders advanced filters in sidebar', () => {
       render(<SearchPageTemplate {...defaultProps} />);
 
-      expect(screen.getByText(/city/i)).toBeInTheDocument();
-      expect(screen.getByText(/specialty/i)).toBeInTheDocument();
+      expect(screen.getByRole('complementary')).toBeInTheDocument();
+      expect(screen.getByText(/Advanced Filters/i)).toBeInTheDocument();
     });
 
     it('calls onFiltersChange when filters are updated', async () => {
@@ -380,47 +309,7 @@ describe('SearchPageTemplate', () => {
       expect(screen.getByRole('complementary')).toBeInTheDocument();
     });
 
-    it('has proper button labels for sidebar toggle', () => {
-      render(
-        <SearchPageTemplate
-          {...defaultProps}
-          sidebarCollapsed={false}
-          onSidebarToggle={jest.fn()}
-        />
-      );
 
-      expect(screen.getByLabelText(/collapse sidebar|expand sidebar/i)).toBeInTheDocument();
-    });
-
-    it('has hidden overlay with proper aria-hidden', () => {
-      render(
-        <SearchPageTemplate
-          {...defaultProps}
-          sidebarCollapsed={false}
-          onSidebarToggle={jest.fn()}
-        />
-      );
-
-      const overlay = document.querySelector('[aria-hidden="true"]');
-      expect(overlay).toBeInTheDocument();
-    });
   });
 
-  describe('Responsive Behavior', () => {
-    it('applies collapsed class when sidebar is collapsed', () => {
-      const { container } = render(
-        <SearchPageTemplate {...defaultProps} sidebarCollapsed={true} />
-      );
-
-      expect(container.firstChild).toHaveClass('sidebarCollapsed');
-    });
-
-    it('does not apply collapsed class when sidebar is expanded', () => {
-      const { container } = render(
-        <SearchPageTemplate {...defaultProps} sidebarCollapsed={false} />
-      );
-
-      expect(container.firstChild).not.toHaveClass('sidebarCollapsed');
-    });
-  });
 });

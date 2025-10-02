@@ -50,8 +50,8 @@ const SearchSection: React.FC<SearchSectionProps> = ({
     <div className={`${styles.container} ${className}`}>
       <div className={styles.searchWrapper}>
         <SearchBar
-          value={searchTerm}
-          onChange={onSearchChange}
+          searchTerm={searchTerm}
+          onSearchChange={onSearchChange}
           onSearch={onSearch}
           onReset={onReset}
           placeholder="Search advocates by name, city, or specialty..."

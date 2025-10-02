@@ -20,57 +20,24 @@
   display: flex;
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 
 /* Sidebar */
 .sidebar {
-  width: var(--sidebar-width, 320px);
+  width: 25%; /* 1/4 of viewport width */
+  min-width: 280px;
+  max-width: 400px;
   background-color: var(--current-surface);
   border-right: 1px solid var(--current-border);
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: transform var(--transition-normal), width var(--transition-normal);
+  transition: width var(--transition-normal), margin var(--transition-normal);
   z-index: var(--z-index-sidebar);
+  flex-shrink: 0;
 }
 
-.sidebarCollapsed .sidebar {
-  transform: translateX(-100%);
-}
-
-.sidebarToggle {
-  position: absolute;
-  top: var(--spacing-lg);
-  right: calc(-24px);
-  width: 24px;
-  height: 48px;
-  background-color: var(--current-card);
-  border: 1px solid var(--current-border);
-  border-left: none;
-  border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  z-index: 1;
-}
-
-.sidebarToggle:hover {
-  background-color: var(--current-hover);
-}
-
-.toggleIcon {
-  font-size: 14px;
-  font-weight: bold;
-  color: var(--current-subtle);
-  transition: transform var(--transition-fast);
-  line-height: 1;
-}
-
-.toggleIcon.collapsed {
-  transform: rotate(180deg);
-}
 
 .sidebarContent {
   flex: 1;

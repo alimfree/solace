@@ -11,6 +11,10 @@
   display: none;
 }
 
+.collapsed .header {
+  border-bottom: none;
+}
+
 /* Header */
 .header {
   display: flex;

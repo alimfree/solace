@@ -45,8 +45,6 @@ export interface SearchPageTemplateProps {
   hasMore?: boolean;
 
   // Layout props
-  sidebarCollapsed?: boolean;
-  onSidebarToggle?: () => void;
   className?: string;
 }
 
@@ -88,13 +86,10 @@ const SearchPageTemplate: React.FC<SearchPageTemplateProps> = ({
   hasMore = false,
 
   // Layout
-  sidebarCollapsed = false,
-  onSidebarToggle,
   className = ''
 }) => {
   const containerClasses = [
     styles.container,
-    sidebarCollapsed ? styles.sidebarCollapsed : '',
     className
   ].filter(Boolean).join(' ');
 
@@ -117,18 +112,6 @@ const SearchPageTemplate: React.FC<SearchPageTemplateProps> = ({
       <div className={styles.main}>
         {/* Sidebar */}
         <aside className={styles.sidebar}>
-          {onSidebarToggle && (
-            <button
-              className={styles.sidebarToggle}
-              onClick={onSidebarToggle}
-              aria-label={sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-            >
-              <span className={`${styles.toggleIcon} ${sidebarCollapsed ? styles.collapsed : ''}`}>
-                ⟨
-              </span>
-            </button>
-          )}
-
           <div className={styles.sidebarContent}>
             <AdvancedFilters
               filters={filters}
@@ -184,14 +167,6 @@ const SearchPageTemplate: React.FC<SearchPageTemplateProps> = ({
         </main>
       </div>
 
-      {/* Overlay for mobile sidebar */}
-      {!sidebarCollapsed && (
-        <div
-          className={styles.overlay}
-          onClick={onSidebarToggle}
-          aria-hidden="true"
-        />
-      )}
     </div>
   );
 };

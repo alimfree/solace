@@ -415,21 +415,6 @@ describe('AdvocatesPage', () => {
     });
   });
 
-  describe('Sidebar Functionality', () => {
-    it('logs sidebar toggle click', async () => {
-      const consoleSpy = jest.spyOn(console, 'log').mockImplementation();
-      const user = userEvent.setup();
-
-      render(<AdvocatesPage />);
-
-      const toggleButton = screen.queryByLabelText(/expand sidebar|collapse sidebar/i) ||
-                           screen.getByText('⟨');
-      await user.click(toggleButton);
-
-      expect(consoleSpy).toHaveBeenCalledWith('Sidebar toggle clicked');
-      consoleSpy.mockRestore();
-    });
-  });
 
   describe('Store Integration', () => {
     it('uses advocate store correctly', () => {

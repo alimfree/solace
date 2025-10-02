@@ -53,23 +53,6 @@ const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({
 
   return (
     <div className={containerClasses}>
-      {collapsible && (
-        <div className={styles.header}>
-          <h2 className={styles.title}>Filters</h2>
-          <Button
-            variant="ghost"
-            size="small"
-            onClick={() => setIsCollapsed(!isCollapsed)}
-            className={styles.toggleButton}
-            aria-label={isCollapsed ? 'Expand filters' : 'Collapse filters'}
-          >
-            <span className={`${styles.chevron} ${isCollapsed ? styles.chevronDown : styles.chevronUp}`}>
-              ⌄
-            </span>
-          </Button>
-        </div>
-      )}
-
       <div className={styles.content}>
         <FilterPanel
           filters={filters}

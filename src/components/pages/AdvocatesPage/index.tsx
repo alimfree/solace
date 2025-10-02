@@ -45,8 +45,6 @@ const AdvocatesPage: React.FC<AdvocatesPageProps> = ({ className = '' }) => {
     toggleTheme
   } = useThemeStore();
 
-  // Local state for sidebar
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   // Load initial data
   useEffect(() => {
@@ -91,10 +89,6 @@ const AdvocatesPage: React.FC<AdvocatesPageProps> = ({ className = '' }) => {
     console.log('Add advocate clicked');
   };
 
-  const handleSidebarToggle = () => {
-    setSidebarCollapsed(!sidebarCollapsed);
-    console.log('Sidebar toggle clicked');
-  };
 
   return (
     <SearchPageTemplate
@@ -134,8 +128,6 @@ const AdvocatesPage: React.FC<AdvocatesPageProps> = ({ className = '' }) => {
       hasMore={hasMore}
 
       // Layout props
-      sidebarCollapsed={sidebarCollapsed}
-      onSidebarToggle={handleSidebarToggle}
       className={className}
     />
   );

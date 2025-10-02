@@ -51,6 +51,10 @@
   width: 100%;
 }
 
+.cardItem {
+  width: 100%;
+}
+
 .card {
   height: 100%;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
@@ -59,6 +63,103 @@
 .card:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
+}
+
+/* Table Layout (Desktop) */
+.tableWrapper {
+  overflow-x: auto;
+  background-color: var(--current-card);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  display: block; /* Show on desktop */
+}
+
+.table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.tableHeader {
+  background-color: var(--color-gray-50);
+}
+
+[data-theme="dark"] .tableHeader {
+  background-color: var(--color-gray-700);
+}
+
+.tableHeaderCell {
+  padding: var(--spacing-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-gray-600);
+  font-size: var(--font-size-sm);
+  border-bottom: 1px solid var(--current-border);
+}
+
+[data-theme="dark"] .tableHeaderCell {
+  color: var(--color-gray-300);
+}
+
+.tableBody {
+  background-color: var(--current-card);
+}
+
+.tableRow {
+  border-bottom: 1px solid var(--current-border);
+  transition: background-color var(--transition-fast);
+}
+
+.tableRow:last-child {
+  border-bottom: none;
+}
+
+.tableRow.clickable {
+  cursor: pointer;
+}
+
+.tableRow.clickable:hover {
+  background-color: var(--current-hover);
+}
+
+.tableCell {
+  padding: var(--spacing-md);
+  white-space: nowrap;
+  vertical-align: top;
+  color: var(--current-text);
+  font-size: var(--font-size-sm);
+}
+
+.tableCell.centered {
+  text-align: center;
+}
+
+.specialtyTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.specialtyTag {
+  display: inline-block;
+  background-color: var(--color-teal-100);
+  color: var(--color-teal-800);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  padding: var(--spacing-xs) calc(var(--spacing-xs) * 1.5);
+  border-radius: var(--border-radius-full);
+  white-space: nowrap;
+}
+
+[data-theme="dark"] .specialtyTag {
+  background-color: var(--color-teal-800);
+  color: var(--color-teal-200);
+}
+
+/* Card Grid Layout (Mobile) */
+.cardGrid {
+  display: none; /* Hidden on desktop */
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
 }
 
 /* Loading State */
@@ -187,6 +288,16 @@
   .grid .list {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: var(--spacing-md);
+  }
+
+  /* Hide table view on mobile */
+  .tableWrapper {
+    display: none;
+  }
+
+  /* Show card view on mobile */
+  .cardGrid {
+    display: grid;
   }
 
   .loadingContainer,

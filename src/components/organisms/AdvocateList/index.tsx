@@ -87,9 +87,62 @@ const AdvocateList: React.FC<AdvocateListProps> = ({
 
   return (
     <div className={containerClasses}>
-      <div className={styles.list}>
+      {/* Desktop Table View (hidden on mobile) */}
+      <div className={styles.tableWrapper}>
+        <table className={styles.table}>
+          <thead className={styles.tableHeader}>
+            <tr>
+              <th className={styles.tableHeaderCell}>Name</th>
+              <th className={styles.tableHeaderCell}>City</th>
+              <th className={styles.tableHeaderCell}>Degree</th>
+              <th className={styles.tableHeaderCell}>Specialties</th>
+              <th className={`${styles.tableHeaderCell} ${styles.centered}`}>Years of Exp</th>
+              <th className={styles.tableHeaderCell}>Phone</th>
+            </tr>
+          </thead>
+          <tbody className={styles.tableBody}>
+            {advocates.map((advocate) => (
+              <tr
+                key={advocate.id}
+                className={`${styles.tableRow} ${onAdvocateClick ? styles.clickable : ''}`}
+                onClick={onAdvocateClick ? () => onAdvocateClick(advocate) : undefined}
+                role={onAdvocateClick ? "button" : undefined}
+                tabIndex={onAdvocateClick ? 0 : undefined}
+              >
+                <td className={styles.tableCell}>
+                  {advocate.firstName} {advocate.lastName}
+                </td>
+                <td className={styles.tableCell}>
+                  {advocate.city}
+                </td>
+                <td className={styles.tableCell}>
+                  {advocate.degree}
+                </td>
+                <td className={styles.tableCell}>
+                  <div className={styles.specialtyTags}>
+                    {advocate.specialties.map((specialty, index) => (
+                      <span key={index} className={styles.specialtyTag}>
+                        {specialty}
+                      </span>
+                    ))}
+                  </div>
+                </td>
+                <td className={`${styles.tableCell} ${styles.centered}`}>
+                  {advocate.yearsOfExperience}
+                </td>
+                <td className={styles.tableCell}>
+                  {advocate.phoneNumber}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Mobile Card View (hidden on desktop) */}
+      <div className={styles.cardGrid}>
         {advocates.map((advocate) => (
-          <div key={advocate.id} className={styles.item}>
+          <div key={advocate.id} className={styles.cardItem}>
             <AdvocateCard
               advocate={advocate}
               onClick={onAdvocateClick}
