@@ -1,0 +1,12 @@
+/* AdvocatesPage Page */
+.container {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Page-specific customizations */
+.advocatesPage {
+  /* Any page-specific styling can go here */
+}
+
+/* Future: Add any page-specific layout customizations */

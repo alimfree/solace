@@ -1,0 +1,250 @@
+/* Header Organism */
+.container {
+  width: 100%;
+  background-color: var(--current-card);
+  border-bottom: 1px solid var(--current-border);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-index-header);
+}
+
+.navigation {
+  margin: 0;
+  border-bottom: none;
+  box-shadow: none;
+}
+
+/* Variants */
+.simple {
+  /* Simple variant with just navigation */
+}
+
+.full {
+  /* Full variant with breadcrumbs */
+}
+
+.compact .navigation {
+  padding: var(--spacing-sm) var(--spacing-lg);
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.addButton {
+  white-space: nowrap;
+}
+
+/* User Actions */
+.userActions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.userName {
+  font-size: var(--font-size-sm);
+  color: var(--current-subtle);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+}
+
+.userMenu {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.userMenuButton {
+  padding: var(--spacing-xs);
+  min-width: auto;
+  height: auto;
+  border-radius: var(--border-radius-full);
+}
+
+.userIcon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.logoutButton {
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  height: auto;
+  min-height: auto;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--current-surface);
+  border-bottom: 1px solid var(--current-border);
+}
+
+.breadcrumbNav {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.breadcrumbList {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.breadcrumbItem {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumbLink {
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  text-decoration: none;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  transition: background-color var(--transition-fast);
+}
+
+.breadcrumbLink:hover {
+  background-color: var(--color-primary-lightest);
+  text-decoration: underline;
+}
+
+.breadcrumbSeparator {
+  font-size: var(--font-size-sm);
+  color: var(--current-subtle);
+  margin: 0 var(--spacing-xs);
+}
+
+.breadcrumbCurrent {
+  font-size: var(--font-size-sm);
+  color: var(--current-text);
+  font-weight: var(--font-weight-medium);
+  padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .actions {
+    gap: var(--spacing-sm);
+  }
+
+  .userName {
+    display: none;
+  }
+
+  .addButton {
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+
+  .breadcrumb {
+    padding: var(--spacing-xs) var(--spacing-md);
+  }
+
+  .breadcrumbLink,
+  .breadcrumbCurrent {
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .actions {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .userActions {
+    order: -1;
+  }
+
+  .addButton {
+    order: 1;
+    font-size: var(--font-size-xs);
+  }
+
+  .breadcrumb {
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+
+  .breadcrumbList {
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+}
+
+/* Large screens */
+@media (min-width: 1024px) {
+  .actions {
+    gap: var(--spacing-lg);
+  }
+
+  .userActions {
+    gap: var(--spacing-md);
+  }
+}
+
+/* Focus management */
+.userMenuButton:focus-visible,
+.logoutButton:focus-visible,
+.breadcrumbLink:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Animation for user menu */
+.userMenu {
+  transition: opacity var(--transition-fast);
+}
+
+.userMenu:hover {
+  opacity: 0.9;
+}
+
+/* Theme transition support */
+.container {
+  transition: background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .breadcrumbLink {
+    text-decoration: underline;
+  }
+
+  .container {
+    border-bottom-width: 2px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .container,
+  .userMenu,
+  .breadcrumbLink {
+    transition: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .container {
+    position: static;
+    box-shadow: none;
+    border-bottom: 1px solid #000;
+  }
+
+  .userActions,
+  .addButton {
+    display: none;
+  }
+}
