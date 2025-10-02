@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchPageTemplate from '../../templates/SearchPageTemplate';
 import { useAdvocateStore } from '../../../store/advocateStore';
 import { useThemeStore } from '../../../store/themeStore';
@@ -45,10 +45,21 @@ const AdvocatesPage: React.FC<AdvocatesPageProps> = ({ className = '' }) => {
     toggleTheme
   } = useThemeStore();
 
+  // Local state for sidebar
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+
   // Load initial data
   useEffect(() => {
     searchAdvocates();
-  }, [searchAdvocates]);
+  }, []); // Empty dependency array to run only once on mount
+
+  // Initialize theme on client side
+  useEffect(() => {
+    // Apply current theme to document
+    if (typeof window !== 'undefined') {
+      document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
+    }
+  }, [isDarkMode]);
 
   const handleSearchChange = (term: string) => {
     setSearchTerm(term);
@@ -78,6 +89,11 @@ const AdvocatesPage: React.FC<AdvocatesPageProps> = ({ className = '' }) => {
   const handleAddAdvocate = () => {
     // TODO: Navigate to add advocate page or open modal
     console.log('Add advocate clicked');
+  };
+
+  const handleSidebarToggle = () => {
+    setSidebarCollapsed(!sidebarCollapsed);
+    console.log('Sidebar toggle clicked');
   };
 
   return (
@@ -118,11 +134,8 @@ const AdvocatesPage: React.FC<AdvocatesPageProps> = ({ className = '' }) => {
       hasMore={hasMore}
 
       // Layout props
-      sidebarCollapsed={false}
-      onSidebarToggle={() => {
-        // TODO: Implement sidebar state management
-        console.log('Sidebar toggle clicked');
-      }}
+      sidebarCollapsed={sidebarCollapsed}
+      onSidebarToggle={handleSidebarToggle}
       className={className}
     />
   );
