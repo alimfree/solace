@@ -1,0 +1,259 @@
+/* Badge Base */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border: none;
+  transition: all var(--transition-fast);
+  gap: var(--spacing-xs);
+  outline: none;
+  text-decoration: none;
+}
+
+.badge:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* Content */
+.content {
+  line-height: 1;
+}
+
+/* Icon */
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Size Variants */
+.small {
+  height: var(--badge-height-sm);
+  padding: 0 var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  gap: var(--spacing-xs);
+}
+
+.small .icon {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.medium {
+  height: var(--badge-height-md);
+  padding: 0 var(--spacing-md);
+  font-size: var(--font-size-sm);
+  gap: var(--spacing-sm);
+}
+
+.medium .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.large {
+  height: var(--badge-height-lg);
+  padding: 0 var(--spacing-lg);
+  font-size: var(--font-size-base);
+  gap: var(--spacing-sm);
+}
+
+.large .icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Shape Variants */
+.rounded {
+  border-radius: var(--border-radius-md);
+}
+
+.pill {
+  border-radius: var(--border-radius-full);
+}
+
+/* Color Variants */
+.primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.secondary {
+  background-color: var(--current-border);
+  color: var(--current-text);
+}
+
+.success {
+  background-color: var(--color-success);
+  color: white;
+}
+
+.warning {
+  background-color: var(--color-warning);
+  color: var(--color-warning-text);
+}
+
+.error {
+  background-color: var(--color-error);
+  color: white;
+}
+
+.info {
+  background-color: var(--color-info);
+  color: white;
+}
+
+/* Clickable State */
+.clickable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.clickableContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  gap: inherit;
+  flex: 1;
+}
+
+.clickable:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.clickable:active {
+  transform: translateY(0);
+}
+
+.clickable.primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.clickable.secondary:hover {
+  background-color: var(--current-text-muted);
+  color: var(--current-background);
+}
+
+.clickable.success:hover {
+  background-color: var(--color-success-hover);
+}
+
+.clickable.warning:hover {
+  background-color: var(--color-warning-hover);
+}
+
+.clickable.error:hover {
+  background-color: var(--color-error-hover);
+}
+
+.clickable.info:hover {
+  background-color: var(--color-info-hover);
+}
+
+/* Remove Button */
+.removeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  margin-left: var(--spacing-xs);
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-fast);
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.removeButton:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.removeButton:focus {
+  outline: 1px solid currentColor;
+  outline-offset: 1px;
+  opacity: 1;
+}
+
+.small .removeButton {
+  width: 1rem;
+  height: 1rem;
+  margin-left: var(--spacing-xs);
+}
+
+.medium .removeButton {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: var(--spacing-sm);
+}
+
+.large .removeButton {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: var(--spacing-sm);
+}
+
+.small .removeButton svg {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.medium .removeButton svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.large .removeButton svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .secondary {
+  background-color: var(--color-border-dark);
+  color: var(--color-text-dark);
+}
+
+[data-theme="dark"] .clickable.secondary:hover {
+  background-color: var(--color-text-muted-dark);
+  color: var(--color-background-dark);
+}
+
+[data-theme="dark"] .removeButton:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .small {
+    height: var(--badge-height-md);
+    padding: 0 var(--spacing-md);
+    font-size: var(--font-size-sm);
+  }
+
+  .medium {
+    height: var(--badge-height-lg);
+    padding: 0 var(--spacing-lg);
+    font-size: var(--font-size-base);
+  }
+}
