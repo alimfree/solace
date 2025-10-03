@@ -65,7 +65,8 @@ These features would have required significant additional time and were not crit
 - **Add Advocate Feature:** No UI for adding new advocates.
 - **Advanced Filtering:** Filtering by years of experience not fully functional.
 - **Dark Mode:** Didn't completely wrap dark mode ui experience for the full page templates.
-- **Style Guide:** If given more time would have used font, and other design queus from the existing solace website. 
+- **Style Guide:** If given more time would have used font, and other design queus from the existing solace website.
+- **Memoization & Caching:** No advanced memoization (e.g., React.memo, useMemo for data) or caching (client-side or server-side) is implemented for complex queries or expensive computations; all filtering/searching is performed directly on the data or via direct API/database calls.
 
 ## Conclusion
 
