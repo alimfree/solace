@@ -13,7 +13,6 @@ const AdvocatesPage: React.FC<AdvocatesPageProps> = ({ className = '' }) => {
   const {
     // Data
     advocates,
-    filteredAdvocates,
     loading,
     error,
     hasMore,
@@ -113,7 +112,7 @@ const AdvocatesPage: React.FC<AdvocatesPageProps> = ({ className = '' }) => {
       onFiltersClear={handleFiltersClear}
 
       // Data props
-      advocates={filteredAdvocates}
+      advocates={advocates}
       resultsCount={getResultsCount()}
       totalCount={getTotalCount()}
       loading={loading}

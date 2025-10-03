@@ -37,7 +37,6 @@ const mockAdvocates = [
 
 const defaultAdvocateStore = {
   advocates: mockAdvocates,
-  filteredAdvocates: mockAdvocates,
   loading: false,
   error: null,
   hasMore: false,
@@ -367,7 +366,7 @@ describe('AdvocatesPage', () => {
       mockUseAdvocateStore.mockReturnValue({
         ...defaultAdvocateStore,
         loading: true,
-        filteredAdvocates: []
+        advocates: []
       });
 
       render(<AdvocatesPage />);
@@ -436,7 +435,7 @@ describe('AdvocatesPage', () => {
       mockUseAdvocateStore.mockReturnValue({
         ...defaultAdvocateStore,
         searchTerm: 'updated search',
-        filteredAdvocates: [mockAdvocates[0]]
+        advocates: [mockAdvocates[0]]
       });
 
       rerender(<AdvocatesPage />);
