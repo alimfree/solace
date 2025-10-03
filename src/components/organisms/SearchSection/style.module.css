@@ -1,0 +1,167 @@
+/* Search Section Organism */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  background-color: var(--current-card);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--current-border);
+}
+
+/* Search Wrapper */
+.searchWrapper {
+  width: 100%;
+}
+
+.searchBar {
+  width: 100%;
+}
+
+/* Meta Information */
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.resultsCount {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.countText {
+  font-size: var(--font-size-sm);
+  color: var(--current-subtle);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Active Filters */
+.activeFilters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.filtersLabel {
+  font-size: var(--font-size-sm);
+  color: var(--current-text);
+  font-weight: var(--font-weight-medium);
+}
+
+.filterBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--current-border);
+}
+
+.clearAllButton {
+  font-size: var(--font-size-sm);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+  }
+
+  .meta {
+    gap: var(--spacing-sm);
+  }
+
+  .resultsCount {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+  }
+
+  .activeFilters {
+    gap: var(--spacing-xs);
+  }
+
+  .filterBadges {
+    gap: var(--spacing-xs);
+  }
+
+  .actions {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+  }
+
+  .filterBadges {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .clearAllButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Loading State */
+.container:has(.searchBar [data-loading="true"]) {
+  opacity: 0.8;
+}
+
+/* Animation for filter badges */
+.filterBadges > * {
+  animation: fadeInScale 0.2s ease-out;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .filterBadges > * {
+    animation: none;
+  }
+}
+
+/* Focus management */
+.clearAllButton:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Large screen layout optimization */
+@media (min-width: 1024px) {
+  .meta {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .activeFilters {
+    max-width: 60%;
+  }
+
+  .resultsCount {
+    min-width: 200px;
+  }
+}

@@ -1,0 +1,172 @@
+/* Advanced Filters Organism */
+.container {
+  background-color: var(--current-card);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--current-border);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.collapsed .content {
+  display: none;
+}
+
+.collapsed .header {
+  border-bottom: none;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid var(--current-border);
+  background-color: var(--current-surface);
+}
+
+.title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--current-text);
+  margin: 0;
+}
+
+.toggleButton {
+  padding: var(--spacing-xs);
+  min-width: auto;
+  height: auto;
+}
+
+.chevron {
+  font-size: 16px;
+  line-height: 1;
+  transition: transform var(--transition-fast);
+  display: inline-block;
+}
+
+.chevronUp {
+  transform: rotate(180deg);
+}
+
+.chevronDown {
+  transform: rotate(0deg);
+}
+
+/* Content */
+.content {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.filterPanel {
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--current-border);
+}
+
+.applyButton {
+  width: 100%;
+}
+
+.clearButton {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Summary */
+.summary {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--current-surface);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--current-border);
+}
+
+.summaryText {
+  font-size: var(--font-size-sm);
+  color: var(--current-subtle);
+  font-weight: var(--font-weight-medium);
+}
+
+/* States */
+.container:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .content {
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+  }
+
+  .header {
+    padding: var(--spacing-md);
+  }
+
+  .actions {
+    gap: var(--spacing-sm);
+  }
+
+  .actions {
+    flex-direction: row;
+  }
+
+  .applyButton,
+  .clearButton {
+    flex: 1;
+    width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: var(--spacing-sm);
+  }
+
+  .header {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .title {
+    font-size: var(--font-size-base);
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .applyButton,
+  .clearButton {
+    width: 100%;
+  }
+}
+
+/* Animation for collapsible */
+@media (prefers-reduced-motion: no-preference) {
+  .content {
+    transition: opacity var(--transition-normal), transform var(--transition-normal);
+  }
+
+  .collapsed .content {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+/* Focus Management */
+.toggleButton:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}

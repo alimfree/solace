@@ -1,0 +1,36 @@
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: none;
+  border: 1px solid var(--current-border);
+  border-radius: var(--border-radius-lg);
+  color: var(--current-text);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  padding: 0;
+}
+
+.toggle:hover {
+  background-color: var(--current-border);
+  border-color: var(--color-primary);
+}
+
+.toggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.toggle:active {
+  transform: scale(0.95);
+}
+
+.toggle svg {
+  transition: transform var(--transition-fast);
+}
+
+.toggle:hover svg {
+  transform: scale(1.1);
+}

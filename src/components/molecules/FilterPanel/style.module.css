@@ -1,0 +1,139 @@
+/* Filter Panel */
+.filterPanel {
+  background-color: var(--current-card);
+  border: 1px solid var(--current-border);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  max-width: 100%;
+}
+
+/* Toggle Button */
+.toggleButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  transition: all var(--transition-fast);
+  margin-bottom: var(--spacing-lg);
+}
+
+.collapsed .toggleButton {
+  margin-bottom: 0;
+}
+
+.toggleButton:hover {
+  opacity: 0.8;
+}
+
+.toggleButton:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm);
+}
+
+.title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--current-text);
+  margin: 0;
+}
+
+.toggleIcon {
+  font-size: var(--font-size-sm);
+  color: var(--current-subtle);
+  transition: transform var(--transition-fast);
+  margin-left: var(--spacing-sm);
+}
+
+.toggleIcon.rotated {
+  transform: rotate(-90deg);
+}
+
+/* Clear Button */
+.clearButtonContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: var(--spacing-md);
+}
+
+.clearButton {
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  height: auto;
+  min-height: auto;
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  overflow: hidden;
+  transition: max-height var(--transition-normal), opacity var(--transition-fast);
+  opacity: 1;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--current-text);
+  margin: 0;
+}
+
+.select {
+  width: 100%;
+}
+
+/* Active State */
+.filterPanel:has(.clearButton) .title {
+  color: var(--color-primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .filterPanel {
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .toggleButton {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .clearButtonContainer {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .filters {
+    gap: var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .filterPanel {
+    padding: var(--spacing-sm);
+  }
+
+  .title {
+    font-size: var(--font-size-base);
+  }
+
+  .toggleButton {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .collapsed .toggleButton {
+    margin-bottom: 0;
+  }
+}
