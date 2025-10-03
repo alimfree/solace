@@ -3,6 +3,7 @@
 ## Project Kickoff & Audit
 
 I began this project by conducting an audit of the existing state, documented in `audit.md`. This process helped me quickly understand the project’s current status, strengths, and weaknesses. The audit informed my priorities and highlighted both critical and non-critical issues.
+Then I created an implementation_plan.md to outline scope of effort for this 2 hour project. 
 
 ## Design & Organization
 
@@ -61,6 +62,8 @@ These features would have required significant additional time and were not crit
 - **Responsive Design:** Basic responsiveness is present, but not fully tested or refined.
 - **Single Advocate View:** No detail page for individual advocates.
 - **Add Advocate Feature:** No UI for adding new advocates.
+- **Advanced Filtering:** Filtering by years of experience not fully functional.
+- **Dark Mode:** Didn't completely wrap dark mode ui experience for the full page templates.
 
 ## Conclusion
 
