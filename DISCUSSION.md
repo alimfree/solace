@@ -53,6 +53,7 @@ These features would have required significant additional time and were not crit
 - **API Endpoints:** RESTful endpoints for fetching and filtering advocates.
 - **Storybook & Unit Tests:** For key components.
 - **Theme Support:** Light/dark mode toggle.
+- **Colors:** Design color inspiration directly from solace health website
 
 ### Missing/Not Fully Implemented
 - **Pagination in UI:** The backend supports pagination, but the frontend does not expose paginated navigation or infinite scroll.
@@ -64,6 +65,7 @@ These features would have required significant additional time and were not crit
 - **Add Advocate Feature:** No UI for adding new advocates.
 - **Advanced Filtering:** Filtering by years of experience not fully functional.
 - **Dark Mode:** Didn't completely wrap dark mode ui experience for the full page templates.
+- **Style Guide:** If given more time would have used font, and other design queus from the existing solace website. 
 
 ## Conclusion
 
